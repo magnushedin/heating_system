@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 if "__main__" in __name__:
     print("Running main function")
 
-    data_name = '11-27_SE3'
+    # data_name = '11-27_SE3'
+    data_name = datetime.date.today().strftime("%m-%d_SE3")
     file_name = f'data/price/{data_name}.json'
 
     url = f'https://www.elprisetjustnu.se/api/v1/prices/2023/{data_name}.json'

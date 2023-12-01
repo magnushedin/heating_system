@@ -23,6 +23,7 @@ if "__main__" in __name__:
         print(key)
 
     date = "2023-11-25"
+    date = datetime.date.today()
     # Use this to select which day to display
 
     hour = []
