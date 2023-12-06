@@ -1,8 +1,9 @@
 import requests
 import json
 import time
-import datetime
+import datetime as dt
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 if "__main__" in __name__:
     print("Running main function")
@@ -23,7 +24,7 @@ if "__main__" in __name__:
         print(key)
 
     date = "2023-11-25"
-    date = datetime.date.today()
+    date = dt.date.today()
     # Use this to select which day to display
 
     hour = []
@@ -34,14 +35,19 @@ if "__main__" in __name__:
             if param["name"] == "t":
                 print(f'{item["validTime"]}: {param["name"]}: {param["values"]}')
                 isoTime = (item["validTime"]).replace("Z", "")
-                dt = datetime.datetime.fromisoformat(isoTime)
-                print(f'{dt.strftime("%H")}: {param["values"][0]}')
-                hour.append(int(dt.strftime("%H")))
+                date_time = dt.datetime.fromisoformat(isoTime)
+                print(f'{date_time.strftime("%Y-%m-%d:%H")}: {param["values"][0]}')
+                # hour.append(date_time.strftime("%Y-%m-%d:%H"))
+                hour.append(date_time)
                 temperature.append(param["values"][0])
             # if vindhastighet
             # if regn (nederbörd)
             # if molnighet (total cloud cover)
 
-    # plt.plot(hour, temperature, '.-')
-    plt.plot(temperature, '.-')
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d (%H.00)'))
+    plt.gca().xaxis.set_major_locator(mdates.HourLocator(byhour=[7,19]))
+    # x_axis = [mdates.date2num(h) for h in hour]
+    plt.plot(hour, temperature, '.-')
+    plt.grid()
+    plt.gcf().autofmt_xdate()
     plt.show()
