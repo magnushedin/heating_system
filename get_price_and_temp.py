@@ -34,22 +34,26 @@ if "__main__" in __name__:
         fh.write(r.content)
         fh.close()
     
-        url = f'https://www.elprisetjustnu.se/api/v1/prices/2023/{date_tomorrow}.json'
-        r = requests.get(url, allow_redirects=True)
-        fh = open(file_name_tomorrow, 'wb')
-        fh.write(r.content)
-        fh.close()
-
         f = open(file_name_today)
         lines = json.load(f)
         f.close()
 
-        f = open(file_name_tomorrow)
-        lines_tomorrow = json.load(f)
-        f.close()
+        try:
+            url = f'https://www.elprisetjustnu.se/api/v1/prices/2023/{date_tomorrow}.json'
+            r = requests.get(url, allow_redirects=True)
+            fh = open(file_name_tomorrow, 'wb')
+            fh.write(r.content)
+            fh.close()
 
-        for line in lines_tomorrow:
-            lines.append(line)
+            f = open(file_name_tomorrow)
+            lines_tomorrow = json.load(f)
+            f.close()
+
+            for line in lines_tomorrow:
+                lines.append(line)
+        except:
+            print(f'Tomorrow is not yet available ({file_name_tomorrow})')
+
 
         print(type(lines))
 
@@ -106,20 +110,22 @@ if "__main__" in __name__:
         plt.ion()
         plt.subplot(2,1,1)
         plt.grid()
-        # plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d (%H.00)'))
-        # plt.gca().xaxis.set_major_locator(mdates.HourLocator(byhour=[7,19]))
-        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d (%H.00)'))
-        plt.gca().xaxis.set_major_locator(mdates.HourLocator(byhour=[7,19]))
-        plt.gcf().autofmt_xdate()
-        plt.plot(x_axis, price, '.-')
-
-        plt.subplot(2,1,2)
-        plt.grid()
         plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d (%H.00)'))
         plt.gca().xaxis.set_major_locator(mdates.HourLocator(byhour=[7,19]))
         plt.gcf().autofmt_xdate()
         plt.plot(hour, temperature, '.-')
+        # plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d (%H.00)'))
+        # plt.gca().xaxis.set_major_locator(mdates.HourLocator(byhour=[7,19]))
+        
+        plt.subplot(2,1,2)
+        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d (%H.00)'))
+        plt.gca().xaxis.set_major_locator(mdates.HourLocator(byhour=[7,19]))
+        plt.gcf().autofmt_xdate()
+        plt.plot(x_axis, price, '.-')
+        plt.grid()
+
         plt.pause(3600)
         plt.close()
+
 
         print("let's do it again")
