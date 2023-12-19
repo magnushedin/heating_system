@@ -13,8 +13,9 @@ def save_data(date):
     f.close()
 
 if "__main__" in __name__:
-
-    while True:
+    a = True 
+    while a:
+        a = False
         print("Running main function")
 
         # data_name = '11-27_SE3'
@@ -168,5 +169,5 @@ module.exports = {
         # plt.pause(3600)
         # plt.close()
 
-        time.sleep(3600)
+        #time.sleep(3600)
         print("let's do it again")
