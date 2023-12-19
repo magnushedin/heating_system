@@ -1,0 +1,60 @@
+import moment from 'moment'
+const data = [
+   {time: moment('2023-12-19 00:00:00+01:00', moment.ISO_8601), count: 0.08982},
+   {time: moment('2023-12-19 01:00:00+01:00', moment.ISO_8601), count: 0.05928},
+   {time: moment('2023-12-19 02:00:00+01:00', moment.ISO_8601), count: 0.02541},
+   {time: moment('2023-12-19 03:00:00+01:00', moment.ISO_8601), count: 0.01761},
+   {time: moment('2023-12-19 04:00:00+01:00', moment.ISO_8601), count: 0.04736},
+   {time: moment('2023-12-19 05:00:00+01:00', moment.ISO_8601), count: 0.09817},
+   {time: moment('2023-12-19 06:00:00+01:00', moment.ISO_8601), count: 0.15734},
+   {time: moment('2023-12-19 07:00:00+01:00', moment.ISO_8601), count: 0.26365},
+   {time: moment('2023-12-19 08:00:00+01:00', moment.ISO_8601), count: 0.34477},
+   {time: moment('2023-12-19 09:00:00+01:00', moment.ISO_8601), count: 0.35179},
+   {time: moment('2023-12-19 10:00:00+01:00', moment.ISO_8601), count: 0.36695},
+   {time: moment('2023-12-19 11:00:00+01:00', moment.ISO_8601), count: 0.34555},
+   {time: moment('2023-12-19 12:00:00+01:00', moment.ISO_8601), count: 0.29831},
+   {time: moment('2023-12-19 13:00:00+01:00', moment.ISO_8601), count: 0.2622},
+   {time: moment('2023-12-19 14:00:00+01:00', moment.ISO_8601), count: 0.26499},
+   {time: moment('2023-12-19 15:00:00+01:00', moment.ISO_8601), count: 0.2602},
+   {time: moment('2023-12-19 16:00:00+01:00', moment.ISO_8601), count: 0.23022},
+   {time: moment('2023-12-19 17:00:00+01:00', moment.ISO_8601), count: 0.22443},
+   {time: moment('2023-12-19 18:00:00+01:00', moment.ISO_8601), count: 0.23022},
+   {time: moment('2023-12-19 19:00:00+01:00', moment.ISO_8601), count: 0.1949},
+   {time: moment('2023-12-19 20:00:00+01:00', moment.ISO_8601), count: 0.17339},
+   {time: moment('2023-12-19 21:00:00+01:00', moment.ISO_8601), count: 0.15333},
+   {time: moment('2023-12-19 22:00:00+01:00', moment.ISO_8601), count: 0.13539},
+   {time: moment('2023-12-19 23:00:00+01:00', moment.ISO_8601), count: 0.12648},
+   {time: moment('2023-12-20 00:00:00+01:00', moment.ISO_8601), count: 0.12871},
+   {time: moment('2023-12-20 01:00:00+01:00', moment.ISO_8601), count: 0.11743},
+   {time: moment('2023-12-20 02:00:00+01:00', moment.ISO_8601), count: 0.11263},
+   {time: moment('2023-12-20 03:00:00+01:00', moment.ISO_8601), count: 0.11274},
+   {time: moment('2023-12-20 04:00:00+01:00', moment.ISO_8601), count: 0.15237},
+   {time: moment('2023-12-20 05:00:00+01:00', moment.ISO_8601), count: 0.19055},
+   {time: moment('2023-12-20 06:00:00+01:00', moment.ISO_8601), count: 0.3024},
+   {time: moment('2023-12-20 07:00:00+01:00', moment.ISO_8601), count: 0.42552},
+   {time: moment('2023-12-20 08:00:00+01:00', moment.ISO_8601), count: 0.50489},
+   {time: moment('2023-12-20 09:00:00+01:00', moment.ISO_8601), count: 0.56015},
+   {time: moment('2023-12-20 10:00:00+01:00', moment.ISO_8601), count: 0.74009},
+   {time: moment('2023-12-20 11:00:00+01:00', moment.ISO_8601), count: 0.67936},
+   {time: moment('2023-12-20 12:00:00+01:00', moment.ISO_8601), count: 0.67546},
+   {time: moment('2023-12-20 13:00:00+01:00', moment.ISO_8601), count: 0.67635},
+   {time: moment('2023-12-20 14:00:00+01:00', moment.ISO_8601), count: 0.74567},
+   {time: moment('2023-12-20 15:00:00+01:00', moment.ISO_8601), count: 0.76253},
+   {time: moment('2023-12-20 16:00:00+01:00', moment.ISO_8601), count: 0.79501},
+   {time: moment('2023-12-20 17:00:00+01:00', moment.ISO_8601), count: 0.8679},
+   {time: moment('2023-12-20 18:00:00+01:00', moment.ISO_8601), count: 0.83665},
+   {time: moment('2023-12-20 19:00:00+01:00', moment.ISO_8601), count: 0.76498},
+   {time: moment('2023-12-20 20:00:00+01:00', moment.ISO_8601), count: 0.76308},
+   {time: moment('2023-12-20 21:00:00+01:00', moment.ISO_8601), count: 0.71073},
+   {time: moment('2023-12-20 22:00:00+01:00', moment.ISO_8601), count: 0.66921},
+   {time: moment('2023-12-20 23:00:00+01:00', moment.ISO_8601), count: 0.54563},
+];
+
+module.exports = {
+    get_data: function() {
+        return data;
+    },
+    get_data_name: function() {
+        return "Electrical price";
+    }
+}
