@@ -2,8 +2,6 @@ import requests
 import json
 import time
 import datetime as dt
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 
 def save_data(date):
     url = f'https://www.elprisetjustnu.se/api/v1/prices/2023/{date_today}.json'
