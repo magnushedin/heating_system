@@ -13,7 +13,7 @@ def save_data(date):
     f.close()
 
 if "__main__" in __name__:
-    a = True 
+    a = True
     while a:
         a = False
         print("Running main function")
@@ -84,9 +84,9 @@ module.exports = {
     },
     get_data_name: function() {
         return "Electrical price";
-    }
-}
+    },
 ''')
+        f_js.write(f'get_update_time: function() {{\n\t\treturn \"{dt.datetime.today().strftime("%Y-%m-%d %H.%M.%S")}\";\n\t}}\n}}')
         f_js.close()
 
         # Temperature data

@@ -14,8 +14,9 @@ const dataModule = require('./datamodule');
   //   { time: moment('2020-11-06 23:39:30', moment.ISO_8601), count: 28 },
   //   { time: moment('2021-11-06 23:39:30', moment.ISO_8601), count: 80 },
   // ];
-  
+
   let data = dataModule.get_data();
+  let update_time = dataModule.get_update_time();
 
   new Chart(
     document.getElementById('acquisitions2'),
@@ -26,7 +27,7 @@ const dataModule = require('./datamodule');
           datasets: [
             {
             showLine: true,
-            label: "Electricity price",
+            label: "Electricity price (" + update_time + ")",
             data: data.map(row => row.count)
           }
         ]
