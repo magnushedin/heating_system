@@ -2,6 +2,7 @@ import requests
 import json
 import time
 import datetime as dt
+import os
 
 def save_data(date):
     url = f'https://www.elprisetjustnu.se/api/v1/prices/2023/{date_today}.json'
@@ -17,6 +18,7 @@ if "__main__" in __name__:
     while a:
         a = False
         print("Running main function")
+        print(f'Working directory: {os.getcwd()}')
 
         # data_name = '11-27_SE3'
         date_today = dt.date.today().strftime("%m-%d_SE3")
@@ -24,8 +26,8 @@ if "__main__" in __name__:
         day_tomorrow = '0' + str(day_today + 1) if (day_today + 1) < 10 else str(day_today + 1)
         date_tomorrow = dt.date.today().strftime(f'%m-{day_tomorrow}_SE3')
         print(f'today: {day_today}, date_today: {date_today}, date_tomorrow: {date_tomorrow}')
-        file_name_today = f'../data/price/{date_today}.json'
-        file_name_tomorrow = f'../data/price/{date_tomorrow}.json'
+        file_name_today = f'/home/pi/work/heating_system/data/price/{date_today}.json'
+        file_name_tomorrow = f'/home/pi/work/heating_system/data/price/{date_tomorrow}.json'
 
         url = f'https://www.elprisetjustnu.se/api/v1/prices/2023/{date_today}.json'
         r = requests.get(url, allow_redirects=True)
@@ -69,7 +71,7 @@ if "__main__" in __name__:
             price.append(line["SEK_per_kWh"])
             js.append((date_time, line["SEK_per_kWh"]))
 
-        f_js = open('../server/src/datamodule.js', 'w')
+        f_js = open('/home/pi/work/heating_system/server/src/datamodule.js', 'w')
         f_js.write('''import moment from 'moment'
 const data = [
 ''')
@@ -91,7 +93,7 @@ module.exports = {
 
         # Temperature data
         data_name = 'temperature'
-        file_name = f'../data/temp/{data_name}.json'
+        file_name = f'/home/pi/work/heating_system/data/temp/{data_name}.json'
 
         url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/11.86/lat/57.71/data,json'
         r = requests.get(url, allow_redirects=True)
@@ -128,7 +130,7 @@ module.exports = {
                 # if regn (nederbörd)
                 # if molnighet (total cloud cover)
 
-        f_js = open('../server/src/tempmodule.js', 'w')
+        f_js = open('/home/pi/work/heating_system/server/src/tempmodule.js', 'w')
         f_js.write('''import moment from 'moment'
 const data = [
 ''')
