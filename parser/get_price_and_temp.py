@@ -4,21 +4,12 @@ import time
 import datetime as dt
 import os
 
-def save_data(date):
-    url = f'https://www.elprisetjustnu.se/api/v1/prices/2023/{date_today}.json'
-    r = requests.get(url, allow_redirects=True)
-    open(file_name_today, 'wb').write(r.content)
-
-    f = open(file_name_today)
-    lines = json.load(f)
-    f.close()
-
 if "__main__" in __name__:
     a = True
     while a:
         a = False
         print("Running main function")
-        print(f'Working directory: {os.getcwd()}')
+        print(f"Current working directory: {os.getcwd()}")
 
         # data_name = '11-27_SE3'
         date_today = dt.date.today().strftime("%m-%d_SE3")
